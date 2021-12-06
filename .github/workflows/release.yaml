@@ -1,0 +1,46 @@
+name: Release
+on:
+  push:
+    tags:
+      - '*'
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: Set output
+        id: vars
+        run: |
+          echo ::set-output name=tag::${GITHUB_REF#refs/*/}
+          echo ::set-output name=date::$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+      - name: Build Docker image
+        uses: docker/build-push-action@v2
+        with:
+          load: true
+          push: false
+          tags: joschi/prosody-alpine:${{ github.sha }}
+          build-args: |
+            BUILD_DATE=${{ steps.vars.outputs.date }}
+            VERSION=${{ steps.vars.outputs.tag }}
+            VCS_REF=${{ github.sha }}
+      - name: Scan image
+        uses: anchore/scan-action@v3
+        with:
+          image: joschi/prosody-alpine:${{ github.sha }}
+          fail-build: false
+      - name: Login to DockerHub
+        uses: docker/login-action@v1 
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+      - name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: joschi/prosody-alpine:${{ steps.vars.outputs.tag }}
+          build-args: |
+            BUILD_DATE=${{ steps.vars.outputs.date }}
+            VERSION=${{ steps.vars.outputs.tag }}
+            VCS_REF=${{ github.sha }}
