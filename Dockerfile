@@ -1,7 +1,7 @@
 FROM alpine:3.15.0
 MAINTAINER Jochen Schalanda <jochen+docker@schalanda.name>
 
-ENV PROSODY_VERSION 0.11.12-r0
+ENV PROSODY_VERSION 0.11.13-r0
 
 # Build-time metadata as defined at http://label-schema.org
 ARG BUILD_DATE
