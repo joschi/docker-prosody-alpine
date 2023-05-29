@@ -27,6 +27,7 @@ jobs:
           load: true
           push: false
           tags: joschi/prosody-alpine:${{ github.sha }}
+          labels: ${{ steps.meta.outputs.labels }}
       - name: Scan image
         uses: anchore/scan-action@v3
         with:
