@@ -1,7 +1,7 @@
 FROM alpine:3.19.0
 MAINTAINER Jochen Schalanda <jochen+docker@schalanda.name>
 
-ENV PROSODY_VERSION 0.12.3-r1
+ENV PROSODY_VERSION 0.12.4-r1
 
 RUN apk add --no-cache bash "prosody=${PROSODY_VERSION}"
 RUN mkdir -p /etc/prosody/conf.d /usr/local/lib/prosody/modules
