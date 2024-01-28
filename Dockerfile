@@ -1,4 +1,4 @@
-FROM alpine:3.19.0
+FROM alpine:3.19.1
 MAINTAINER Jochen Schalanda <jochen+docker@schalanda.name>
 
 ENV PROSODY_VERSION 0.12.4-r1
