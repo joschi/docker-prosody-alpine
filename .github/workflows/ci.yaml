@@ -22,7 +22,7 @@ jobs:
           images: joschi/prosody-alpine
       - name: Build Docker image
         id: docker_build
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           load: true
           push: false
