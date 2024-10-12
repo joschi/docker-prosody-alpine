@@ -29,11 +29,10 @@ jobs:
           tags: joschi/prosody-alpine:${{ github.sha }}
           labels: ${{ steps.meta.outputs.labels }}
       - name: Scan image
-        uses: anchore/scan-action@v4
+        uses: anchore/scan-action@v5
         with:
           image: joschi/prosody-alpine:${{ github.sha }}
           fail-build: false
-          acs-report-enable: true
       - name: Upload Anchore Scan Report
         uses: github/codeql-action/upload-sarif@v3
         with:
