@@ -1,5 +1,5 @@
 FROM alpine:3.21.0
-MAINTAINER Jochen Schalanda <jochen+docker@schalanda.name>
+LABEL org.opencontainers.image.authors="jochen+docker@schalanda.name"
 
 ENV PROSODY_VERSION=0.12.4-r2
 
