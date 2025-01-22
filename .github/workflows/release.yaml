@@ -38,6 +38,7 @@ jobs:
         env:
           SOURCE_DATE_EPOCH: ${{ env.TIMESTAMP }}
       - name: Scan image
+        id: scan
         uses: anchore/scan-action@abae793926ec39a78ab18002bc7fc45bbbd94342 # v6
         with:
           image: joschi/prosody-alpine:${{ github.sha }}-test
