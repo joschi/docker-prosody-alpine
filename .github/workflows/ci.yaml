@@ -41,6 +41,6 @@ jobs:
           image: joschi/prosody-alpine:${{ github.sha }}
           fail-build: false
       - name: Upload Anchore Scan Report
-        uses: github/codeql-action/upload-sarif@4e83f6b818d7c9f52143570963b2c7f7f055decb # v3
+        uses: github/codeql-action/upload-sarif@17a820bf2e43b47be2c72b39cc905417bc1ab6d0 # v3
         with:
           sarif_file: ${{ steps.scan.outputs.sarif }}
