@@ -61,7 +61,7 @@ jobs:
         env:
           SOURCE_DATE_EPOCH: ${{ env.TIMESTAMP }}
       - name: Attest
-        uses: actions/attest-build-provenance@bd77c077858b8d561b7a36cbe48ef4cc642ca39d # v2
+        uses: actions/attest-build-provenance@c074443f1aee8d4aeeae555aebba3282517141b2 # v2
         id: attest
         with:
           subject-name: index.docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/prosody-alpine
